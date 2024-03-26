@@ -1,0 +1,102 @@
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 48px;
+  margin-top: 48px;
+}
+.actions button {
+  width: 100%;
+  max-width: 183px;
+  height: 40px;
+}
+.fourdStep {
+  width: 100%;
+}
+.socialsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+.stepNumbers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 25px;
+}
+.stepNumbersActive {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #007aff;
+}
+.stepNumbersItem {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+.socials {
+  width: calc(100% - 40px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+@media screen and (max-width: 1300px) {
+  .socials {
+    width: calc(100% - 40px);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .actions {
+    margin-top: 28px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .socials {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .socialsContainer {
+    position: relative;
+  }
+  .stepNumbers {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -30px;
+  }
+}
+@media screen and (max-width: 768px){
+  .socials {
+    width: calc(100% - 5px);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+@media screen and (max-width: 480px){
+  .stepNumbers {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0px;
+  }
+  .socials {
+    width: calc(100% - 40px);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .fourdStep h2{
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,9 @@
+.navbar {
+  grid-column: 1;
+  grid-row: 1;
+  height: 100%;
+  width: 100%;
+  margin-right: auto;
+  min-height: 750px;
+  background-color: green;
+}

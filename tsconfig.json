@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "target": "esnext", // Указывает целевую версию ECMAScript для компиляции
+        "module": "esnext", // Разрешает использование import.meta
+        "jsx": "react-jsx", // Указывает режим обработки JSX
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "strict": true,
+        "types": ["vite/client"],
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true
+    },
+    "include": ["resources/js/**/*", "react-app-env.d.ts"]
+}

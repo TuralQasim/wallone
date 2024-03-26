@@ -1,0 +1,37 @@
+.checkboxContainer {
+  width: max-content;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.checkboxContainer p {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #fff;
+  pointer-events: none;
+  user-select: none;
+}
+.customCheckbox {
+  width: 27px;
+  height: 27px;
+  background-color: #202020;
+  border: 1px solid #007aff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  pointer-events: none;
+}
+.customCheckbox svg {
+  color: #fff;
+  pointer-events: none;
+  font-size: 18px;
+}
+

@@ -1,0 +1,235 @@
+.header {
+    width: 100%;
+    height: 52px;
+    margin: 46px 0 69px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.logo {
+    width: 16.4%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    height: 100%;
+}
+.logo a {
+    width: 28%;
+    height: 100%;
+}
+.logo a img {
+    width: 100%;
+    height: 100%;
+}
+.morePopular {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.morePopular h2 {
+    font-family: Fredoka;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #fff;
+}
+.morePopular h4 {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #fff;
+}
+.language {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+.language h3 {
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #fff;
+    transition: 0.4s;
+    cursor: pointer;
+}
+.language h3:hover {
+    color: #ddddddcc;
+}
+.language span {
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #007aff;
+    cursor: pointer;
+}
+.account {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    position: relative;
+}
+.account h4 {
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.4s;
+}
+.account:hover h4 {
+    color: #ddddddcc;
+}
+.account svg {
+    color: #fff;
+    font-size: 24px;
+    pointer-events: none;
+    transition: 0.4s;
+}
+.account:hover svg {
+    color: #ddddddcc;
+}
+.account img,
+.account > svg:first-of-type {
+    pointer-events: none;
+    width: 20px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+.accDropdown {
+    position: absolute;
+    top: calc(100% + 14px);
+    right: 0;
+    width: calc(100% + 20px);
+    height: 113px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #121212;
+    border: 1px solid #007aff;
+    box-shadow: 0px 0px 24px 1px #007aff;
+    z-index: 99;
+    padding: 13px 7px 13px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.accDropdownEntered {
+    width: calc(100% + 40px);
+    height: 163px;
+}
+.accDropdownUser {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: auto;
+    gap: 5px;
+}
+.accDropdownUser img {
+    grid-column: 1;
+    grid-row: 1;
+    aspect-ratio: 1/1;
+    width: 100%;
+}
+.accDropdownUserName {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 5px;
+}
+.accDropdownUserName a {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16.41px;
+    text-align: center;
+    color: #fff;
+    transition: 0.4s;
+}
+.accDropdownUser:hover a {
+    color: #ddddddcc;
+}
+.accDropdownUserName h5 {
+    font-family: Roboto;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 11.72px;
+    text-align: center;
+    color: #ddddddcc;
+}
+.accDropdown a {
+    display: inline-block;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+}
+.accDropdown a h3 {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #fff;
+    transition: 0.4s;
+}
+.accDropdown a svg {
+    color: #fff;
+}
+.accDropdown a:hover h3,
+.accDropdown a:hover svg {
+    color: #ddddddcc;
+}
+.userNotification,
+.userParams,
+.logout {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px;
+    gap: 8px;
+}
+.logout {
+    margin-bottom: 0;
+}
+.userNotification h5,
+.userParams h5,
+.logout h5 {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18.75px;
+    text-align: center;
+    color: #fff;
+    transition: 0.4s;
+}
+.userNotification:hover h5,
+.userParams:hover h5,
+.logout:hover h5 {
+    color: #ddddddcc;
+}

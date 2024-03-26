@@ -1,0 +1,42 @@
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 48px;
+  margin-top: 48px;
+}
+.actions button {
+  width: 100%;
+  max-width: 183px;
+  height: 40px;
+}
+.secondStep {
+  width: 100%;
+}
+@media screen and (max-width: 1250px) {
+  .secondStep h2 {
+    font-size: 30px;
+  }
+  .secondStep label h2 {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .secondStep h2 {
+    font-size: 24px;
+  }
+  .secondStep label h2 {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .secondStep h2 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .secondStep label h2 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
