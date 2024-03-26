@@ -1,12 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\Front\AuthController;
-// use App\Http\Controllers\Front\SkillsController;
-// use App\Http\Controllers\Front\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,24 +26,29 @@ Route::group(['middleware' => ['check_user_not_auth']], function () {
         session()->forget('redirectData');
         return Inertia::render('Login', $data);
     })->name('login');
-    Route::post('login', [AuthController::class, 'login']); 
+
+    Route::post('/login', [AuthController::class, 'login']);
+
     Route::get('/register', function () {
         $data = session('redirectData', []);
         session()->forget('redirectData');
         return Inertia::render('Register', $data);
     })->name('register');
+
     Route::post('register', [AuthController::class, 'register']);
     Route::get('/verify-email', function () {
         $data = session('redirectData', []);
         session()->forget('redirectData');
         return Inertia::render('VerifyEmail', $data);
     })->name('verify-email');
+
     Route::post('/verify-email', [AuthController::class, 'verifyEmail'])->name('verification.verify');
     Route::get('/register/find-from', function () {
         $data = session('redirectData', []);
         session()->forget('redirectData');
         return Inertia::render('FindFrom', $data);
     })->name('register/find-from');
+
     Route::post('/register/find-from', [AuthController::class, 'findFrom']);
     Route::get('/register/add-skills', function () {
         $data["redirectData"]= session('redirectData', []);
@@ -56,12 +57,14 @@ Route::group(['middleware' => ['check_user_not_auth']], function () {
         session()->forget('skillsData');
         return Inertia::render('AddSkills', $data);
     })->name('register/add-skills');
+
     Route::post('register/add-skills', [AuthController::class, 'addSkills']);
     Route::get('/register/add-image', function () {
         $data= session('redirectData', []);
         session()->forget('redirectData');
         return Inertia::render('AddImage', $data);
     })->name('register/add-image');
+
     Route::post('register/add-image', [AuthController::class, 'upload']);
 
 });
