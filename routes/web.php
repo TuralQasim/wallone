@@ -20,6 +20,7 @@ Route::get('/', function () {
         'title' => "Tural",
     ]);
 });
+
 Route::group(['middleware' => ['check_user_not_auth']], function () {
     Route::get('/login', function () {
         $data = session('redirectData', []);

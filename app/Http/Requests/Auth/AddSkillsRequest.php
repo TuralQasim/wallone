@@ -16,7 +16,7 @@ class AddSkillsRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            "user_id" => ["required", "int", "exists:" . app(User::class)->getTable() . ",id"],
+            "user_id" => ["required", "int", "exists:Users,id"],
             "skill_ids" => ["required", "array"],
             "skill_ids.*" => ["required", "int", "max:30", "exists:" . app(Skill::class)->getTable() . ",id"],
         ];

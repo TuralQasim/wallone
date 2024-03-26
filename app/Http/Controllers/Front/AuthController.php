@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\TokenService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
@@ -46,16 +47,19 @@ class AuthController extends Controller
             $remember = $request->boolean('remember_me');
 
             if (Auth::attempt($credentials, $remember)) {
-                $user = User::where('email', $request->email)->first();
 
-                // JWT token oluştur
-                $token = $user->createToken('API Token')->plainTextToken;
+                //Многоразовое использование.
+                //Главное правило => Меняем один блок, меняется везде.
+                $token = TokenService::getToken($request->email);
+
                 Inertia::render('Home',[
                     'message' => __("SuccessfullyLogin"),
                     'data' => ['token' => $token],
                 ]);
+
                 return redirect('/')->with('message', __("SuccessfullyLoggedOut"));
             } else {
+
                 return Inertia::render('Login',[
                     'error' => __("InvalidCredentials"),
                 ]);
@@ -94,11 +98,11 @@ class AuthController extends Controller
             session(['redirectData' => $user]);
             return redirect()->route('verify-email');
         }  catch (\Illuminate\Validation\ValidationException $e) {
-            
+
             // При ошибке валидации, редирект обратно с добавлением ошибок в сессию.
             return back()->withErrors($e->validator)->withInput();
         } catch (\Exception $e) {
-            
+
             // Для других исключений, возвращаем ответ через Inertia с общим сообщением об ошибке.
             return Inertia::render('Register', [
                 'error' => __("An error occurred while processing the request"),

@@ -10,7 +10,7 @@ class CheckResetCodeRequest extends BaseRequest
     public function rules()
     {
         return [
-            'reset_password_code' => ["required", "string", "exists:" . app(User::class)->getTable() . ",reset_password_code"],
+            'reset_password_code' => ["required", "string", "exists:Users,reset_password_code"],
         ];
     }
 

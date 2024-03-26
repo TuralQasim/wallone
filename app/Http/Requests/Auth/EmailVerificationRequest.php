@@ -10,7 +10,7 @@ class EmailVerificationRequest extends BaseRequest
     public function rules()
     {
         return [
-            'verification_code' => ["required", "string", "exists:" . app(User::class)->getTable() . ",verification_code"],
+            'verification_code' => ["required", "string", "exists:Users,verification_code"],
         ];
     }
 

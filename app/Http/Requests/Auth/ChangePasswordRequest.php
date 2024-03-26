@@ -16,7 +16,7 @@ class ChangePasswordRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            "id" => ["required", "int", "exists:" . app(User::class)->getTable() . ",id"],
+            "id" => ["required", "int", "exists:Users,id"],
             "password" => ["required", "string", "max:30", function ($attribute, $value, $fail) {
                 $user = User::findOrFail($this->id); // ID'ye göre kullanıcıyı bul
 

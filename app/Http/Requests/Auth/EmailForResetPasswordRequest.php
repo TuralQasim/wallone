@@ -15,7 +15,7 @@ class EmailForResetPasswordRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            "email" => ["required", "email", "exists:" . app(User::class)->getTable() . ",email"],
+            "email" => ["required", "email", "exists:Users,email"],
         ];
     }
 }

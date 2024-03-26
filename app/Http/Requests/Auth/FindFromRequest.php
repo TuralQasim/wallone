@@ -16,7 +16,7 @@ class FindFromRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            "id" => ["required", "int", "exists:" . app(User::class)->getTable() . ",id"],
+            "id" => ["required", "int", "exists:Users,id"],
             "find_from" => ["required", "string", "max:30"],
         ];
     }

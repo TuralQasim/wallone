@@ -16,8 +16,8 @@ class RegisterRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            "username" => ["required", "string", "max:30", "unique:" . app(User::class)->getTable() . ",username"],
-            "email" => ["required", "email", "unique:" . app(User::class)->getTable() . ",email"],
+            "username" => ["required", "string", "max:30", "unique:users,username"],
+            "email" => ["required", "email", "unique:users,email"],
             "password" => ["required", "string"],
             "repeated_password" => ["required", "same:password"]
         ];

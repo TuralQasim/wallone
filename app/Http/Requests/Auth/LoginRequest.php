@@ -16,7 +16,7 @@ class LoginRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            "email" => ["required", "email", "exists:" . app(User::class)->getTable() . ",email"],
+            "email" => ["required", "email", "exists:Users,email"],
             'password' => ["required", "string"],
             'remember_me' => ["nullable", "boolean"], // "Remember Me" seçeneği opsiyonel ve boolean olmalı
         ];

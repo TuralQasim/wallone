@@ -15,7 +15,7 @@ class AddImageRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            "id" => ["required", "int", "exists:" . app(User::class)->getTable() . ",id"],
+            "id" => ["required", "int", "exists:Users,id"],
             'image' => ['required', 'image', 'mimes:jpg,jpeg,png,gif,webp', 'max:2048'], // image parametresinin belirtilmesi ve geçerli bir resim dosyası olması gerekiyor
         ];
     }
