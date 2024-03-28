@@ -1,8 +1,16 @@
 <?php
 
+use App\Http\Controllers\Front\Auth\Emails\VerifyEmailController;
+use App\Http\Controllers\Front\Auth\LoginController;
+use App\Http\Controllers\Front\Auth\LogoutController;
+use App\Http\Controllers\Front\Auth\RegisterController;
+use App\Http\Controllers\Front\Auth\Steps\StepOneController;
+use App\Http\Controllers\Front\Auth\Steps\StepThreeController;
+use App\Http\Controllers\Front\Auth\Steps\StepTwoController;
+use App\Http\Controllers\Front\Pages\Home\HomeController;
+use App\Http\Services\RouterService;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-use App\Http\Controllers\Front\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,63 +23,43 @@ use App\Http\Controllers\Front\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Home', [
-        'title' => "Tural",
-    ]);
-});
+// Главная
+Route::get(RouterService::get('index'), [HomeController::class, 'index'])->name('home.index');
 
 Route::group(['middleware' => ['check_user_not_auth']], function () {
-    Route::get('/login', function () {
-        $data = session('redirectData', []);
-        session()->forget('redirectData');
-        return Inertia::render('Login', $data);
-    })->name('login');
 
-    Route::post('/login', [AuthController::class, 'login']);
+    // Логин
+    Route::get(RouterService::get('login'), [LoginController::class, 'index'])->name('login.index');
+    Route::post(RouterService::get('login'), [LoginController::class, 'login.store']);
 
-    Route::get('/register', function () {
-        $data = session('redirectData', []);
-        session()->forget('redirectData');
-        return Inertia::render('Register', $data);
-    })->name('register');
+    //Регистрация
+    Route::get(RouterService::get('register'), [RegisterController::class, 'index'])->name('register.index');
+    Route::post(RouterService::get('register'), [RegisterController::class, 'store'])->name('register.store');
 
-    Route::post('register', [AuthController::class, 'register']);
-    Route::get('/verify-email', function () {
-        $data = session('redirectData', []);
-        session()->forget('redirectData');
-        return Inertia::render('VerifyEmail', $data);
-    })->name('verify-email');
+    //TODO: Я не имею право перейти на другую страницу, пока не пройду поэтапно!!!!
 
-    Route::post('/verify-email', [AuthController::class, 'verifyEmail'])->name('verification.verify');
-    Route::get('/register/find-from', function () {
-        $data = session('redirectData', []);
-        session()->forget('redirectData');
-        return Inertia::render('FindFrom', $data);
-    })->name('register/find-from');
+    // Подтверждение почты
+    Route::get(RouterService::get('verify-email'), [VerifyEmailController::class, 'index'])->name('verify-email.index');
+    Route::post(RouterService::get('verify-email'), [VerifyEmailController::class, 'store'])->name('verification.verify');
 
-    Route::post('/register/find-from', [AuthController::class, 'findFrom']);
-    Route::get('/register/add-skills', function () {
-        $data["redirectData"]= session('redirectData', []);
-        session()->forget('redirectData');
-        $data["skillsData"] = session('skillsData', []);
-        session()->forget('skillsData');
-        return Inertia::render('AddSkills', $data);
-    })->name('register/add-skills');
+    //Далее шаги
 
-    Route::post('register/add-skills', [AuthController::class, 'addSkills']);
-    Route::get('/register/add-image', function () {
-        $data= session('redirectData', []);
-        session()->forget('redirectData');
-        return Inertia::render('AddImage', $data);
-    })->name('register/add-image');
+    //Как ты нас нашел?
+    Route::get(RouterService::get('step1'), [StepOneController::class, 'index'])->name('find-from.index');
+    Route::post(RouterService::get('step1'), [StepOneController::class, 'store'])->name('find-from.store');
 
-    Route::post('register/add-image', [AuthController::class, 'upload']);
+    //Творческие навыки
+    Route::get(RouterService::get('step2'), [StepTwoController::class, 'index'])->name('add-skills.index');
+    Route::post(RouterService::get('step2'), [StepTwoController::class, 'store'])->name('add-skills.store');
+
+    //Аватарка
+    Route::get(RouterService::get('step3'), [StepThreeController::class, 'index'])->name('add-image.index');
+    Route::post(RouterService::get('step3'), [StepThreeController::class, 'upload'])->name('add-image.store');
 
 });
 
 Route::group(['middleware' => ['check_user_auth']], function () {
-    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('/logout', [LogoutController::class, 'store'])->name('logout.store');
 });
 
 
