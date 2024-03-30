@@ -79,7 +79,7 @@ const FindFrom: React.FC<FindFromProps> = ({ title, page }) => {
                 id: page.id,
                 find_from: items,
             };
-            router.post("/register/find-from", newData);
+            router.post("/steps/1", newData);
         }
     };
 

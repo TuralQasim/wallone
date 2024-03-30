@@ -48,7 +48,7 @@ class StepThreeController extends StepController
 
                     session(['redirectData' => $this->userRepository->show($request->id ?? null) ?? null]);
 
-                    return redirect()->route(RouterService::get("index"));
+                    return redirect()->route("login.index");
 
                 } else {
                     return Inertia::render('AddImage',[

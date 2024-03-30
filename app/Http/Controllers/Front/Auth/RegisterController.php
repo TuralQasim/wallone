@@ -37,7 +37,7 @@ class RegisterController extends AuthController
 
             session(['redirectData' => $user]);
 
-            return redirect()->route(RouterService::get('verify-email'));
+            return redirect()->route('verify-email.index');
         }  catch (\Illuminate\Validation\ValidationException $e) {
 
             // При ошибке валидации, редирект обратно с добавлением ошибок в сессию.

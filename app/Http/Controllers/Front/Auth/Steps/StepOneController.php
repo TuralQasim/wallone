@@ -40,9 +40,9 @@ class StepOneController extends StepController
             if ($result) {
                 session([
                     'redirectData' => $this->userRepository->show($request->id ?? null) ?? null,
-                    "skillsData" =>  $this->skillsRepository->list()
+                    
                 ]);
-                return redirect()->route(RouterService::get("step2"));
+                return redirect()->route("add-skills.index");
             } else {
                 return Inertia::render('FindFrom',[
                     'error' => __("An error occurred while processing the request"),

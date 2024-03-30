@@ -30,7 +30,7 @@ Route::group(['middleware' => ['check_user_not_auth']], function () {
 
     // Логин
     Route::get(RouterService::get('login'), [LoginController::class, 'index'])->name('login.index');
-    Route::post(RouterService::get('login'), [LoginController::class, 'login.store']);
+    Route::post(RouterService::get('login'), [LoginController::class, 'store'])->name('login.store');
 
     //Регистрация
     Route::get(RouterService::get('register'), [RegisterController::class, 'index'])->name('register.index');
@@ -54,7 +54,7 @@ Route::group(['middleware' => ['check_user_not_auth']], function () {
 
     //Аватарка
     Route::get(RouterService::get('step3'), [StepThreeController::class, 'index'])->name('add-image.index');
-    Route::post(RouterService::get('step3'), [StepThreeController::class, 'upload'])->name('add-image.store');
+    Route::post(RouterService::get('step3'), [StepThreeController::class, 'store'])->name('add-image.store');
 
 });
 

@@ -27,7 +27,8 @@ class StepTwoController extends StepController
     public function index()
     {
         $data["redirectData"] = session('redirectData', []);
-        $data["skillsData"] = session('skillsData', []);
+        $data["skillsData"] = $this->skillsRepository->list();
+                    
 
         session()->forget('redirectData');
         session()->forget('skillsData');
@@ -42,7 +43,7 @@ class StepTwoController extends StepController
 
             if ($result) {
                 session(['redirectData' => $this->userRepository->show($request->user_id ?? null) ?? null]);
-                return redirect()->route(RouterService::get("step3"));
+                return redirect()->route('add-image.index');
             } else {
                 return Inertia::render('AddSkills',[
                     'error' => __("Skills haven't been added"),

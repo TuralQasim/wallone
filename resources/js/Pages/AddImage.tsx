@@ -28,7 +28,7 @@ const AddImage: React.FC<AddImageProps> = ({ title, page }) => {
             const formData = new FormData();
             formData.append("image", sendFile);
             formData.append("id", page.id);
-            router.post("add-image", formData);
+            router.post("/steps/3", formData);
         }
     };
 

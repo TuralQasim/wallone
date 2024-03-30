@@ -26,7 +26,7 @@ const AddSkills: React.FC<AddSkillsProps> = ({ title, page }) => {
                 user_id: page.redirectData.id,
                 skill_ids: skillsArr,
             };
-            router.post("/register/add-skills", body);
+            router.post("/steps/2", body);
         }
     };
 

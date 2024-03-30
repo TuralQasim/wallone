@@ -42,8 +42,7 @@ class VerifyEmailController extends AuthController
             if ($result) {
 
                 session(['redirectData' => $this->userRepository->show($user->id ?? null)]);
-
-                return redirect()->route(RouterService::get('step1'));
+                return redirect()->route("find-from.index");
             } else {
                 return Inertia::render('VerifyEmail',[
                     'error' => __("An error occurred while processing the request"),
