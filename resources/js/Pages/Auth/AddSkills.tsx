@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Inertia } from "@inertiajs/inertia";
-import ChecksItem from "../Components/ChecksItem";
+import ChecksItem from "../../Components/ChecksItem";
 import { IoIosArrowBack } from "react-icons/io";
-import Button from "../Components/Button";
-import styles from "../../css/fourdStep.module.css";
-import Loading from "../Components/Loading";
+import Button from "../../Components/Button";
+import styles from "../../../css/fourdStep.module.css";
+import Loading from "../../Components/Loading";
 import { toast } from "react-toastify";
-import RegisterLayout from "../Layouts/RegisterLayout";
+import RegisterLayout from "../../Layouts/RegisterLayout";
 import { router } from "@inertiajs/react";
 
 type AddSkillsProps = {
@@ -18,6 +18,11 @@ const AddSkills: React.FC<AddSkillsProps> = ({ title, page }) => {
     const dispatch = useDispatch();
     const [skillsArr, setSkillsArr] = useState([]);
     const [error, setError] = useState(false);
+    useEffect(() => {
+        if (page.redirectData.find_from) {
+            toast.success("Выберите минимум 2 пункта");
+        }
+    }, []);
     const checkItems = () => {
         if (!skillsArr.length || skillsArr.length < 2) {
             setError(true);

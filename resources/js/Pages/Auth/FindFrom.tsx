@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { IoIosArrowBack } from "react-icons/io";
-import Button from "../Components/Button";
-import ChecksItem from "../Components/ChecksItem";
-import styles from "../../css/thirdStep.module.css";
+import Button from "../../Components/Button";
+import ChecksItem from "../../Components/ChecksItem";
+import styles from "../../../css/thirdStep.module.css";
 import { Inertia } from "@inertiajs/inertia";
 import { toast } from "react-toastify";
-import RegisterLayout from "../Layouts/RegisterLayout";
+import RegisterLayout from "../../Layouts/RegisterLayout";
 import { router } from "@inertiajs/react";
 
 // Обновление состояний Redux
@@ -67,7 +67,11 @@ const FindFrom: React.FC<FindFromProps> = ({ title, page }) => {
     const { handleSubmit } = useForm({
         resolver: yupResolver(schema),
     });
-
+    useEffect(() => {
+        if (page.status) {
+            toast.success("Выберите минимум 1 пункт");
+        }
+    }, []);
     const onSubmit = (e: any) => {
         e.preventDefault();
         if (!items) {

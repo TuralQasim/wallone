@@ -1,14 +1,14 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { Link, usePage } from "@inertiajs/react";
 import { Inertia } from "@inertiajs/inertia";
-import styles from "../../css/login.module.css";
-import Label from "../Components/Label";
-import logo from "../../../public/icons/logo.svg";
-import vk from "../../../public/icons/vk.svg";
-import anime from "../../../public/images/anime.jpg";
+import styles from "../../../css/login.module.css";
+import Label from "../../Components/Label";
+import logo from "../../../../public/icons/logo.svg";
+import vk from "../../../../public/icons/vk.svg";
+import anime from "../../../../public/images/anime.jpg";
 import { FaTelegramPlane } from "react-icons/fa";
-import CustomCheckbox from "../Components/CustomCheckbox";
-import Button from "../Components/Button";
+import CustomCheckbox from "../../Components/CustomCheckbox";
+import Button from "../../Components/Button";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm as useReactHookForm } from "react-hook-form";
@@ -34,6 +34,11 @@ const Login: React.FC<LoginProps> = ({ title }) => {
     const [check, setCheck] = useState(false);
     const dispatch = useDispatch();
     const page = usePage().props;
+    useEffect(() => {
+        if (page.email) {
+            toast.success("Успешная регистрация!");
+        }
+    }, []);
     // const { user } = useSelector((state: any) => state?.user);
     // if (page.error) {
     //     const err = page.error.toString();

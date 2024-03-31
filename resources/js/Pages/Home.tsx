@@ -6,9 +6,9 @@ import LayoutWithHeader from "../Layouts/LayoutWithHeader";
 type homeProps = {
     title: string;
     layout: boolean;
+    page: any;
 };
-const Home: React.FC<homeProps> = ({ title, layout }) => {
-
+const Home: React.FC<homeProps> = ({ title, layout, page }) => {
     return (
         <>
             <Head title={title} />

@@ -3,12 +3,12 @@ import { Inertia } from "@inertiajs/inertia";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import Label from "../Components/Label";
-import Button from "../Components/Button";
+import Label from "../../Components/Label";
+import Button from "../../Components/Button";
 import React from "react";
-import styles from "../../css/firstStep.module.css";
+import styles from "../../../css/firstStep.module.css";
 import { router } from "@inertiajs/react";
-import RegisterLayout from "../Layouts/RegisterLayout";
+import RegisterLayout from "../../Layouts/RegisterLayout";
 
 const schema = Yup.object({
     username: Yup.string().required("Пожалуйста, введите имя пользователя"),
@@ -34,14 +34,14 @@ const Register: React.FC<registerProps> = ({ page }) => {
         resolver: yupResolver(schema),
     });
 
-    function onSubmit (data: any) {
+    function onSubmit(data: any) {
         router.post("/register", {
             username: data.username,
             email: data.email,
             password: data.password,
             repeated_password: data.passwordConfirm,
         });
-    };
+    }
 
     return (
         <form className={styles.firstStep} onSubmit={handleSubmit(onSubmit)}>

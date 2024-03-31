@@ -1,15 +1,15 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
-import styles from "../../css/fifthStep.module.css";
-import Button from "../Components/Button";
+import styles from "../../../css/fifthStep.module.css";
+import Button from "../../Components/Button";
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "@inertiajs/react";
-import avatar from "../../../public/images/avatar2.png";
+import avatar from "../../../../public/images/avatar2.png";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { useSelector } from "react-redux"; // Используйте useSelector вместо useAppSelector для доступа к Redux store
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import RegisterLayout from "../Layouts/RegisterLayout";
+import RegisterLayout from "../../Layouts/RegisterLayout";
 import { router } from "@inertiajs/react";
 
 type AddImageProps = {
@@ -31,7 +31,11 @@ const AddImage: React.FC<AddImageProps> = ({ title, page }) => {
             router.post("/steps/3", formData);
         }
     };
-
+    useEffect(() => {
+        if (page.skills.length) {
+            toast.success("Выберите фото профиля");
+        }
+    }, []);
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files && event.target.files[0];
         if (file) {
